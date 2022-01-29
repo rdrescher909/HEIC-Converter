@@ -58,5 +58,5 @@ def home():
     return send_file(output_file_path, mimetype="image/png")
 
 if __name__ == "__main__":
-    http_server = WSGIServer(('', int(os.environ.get("PORT", 8080))), app)
+    http_server = WSGIServer(('0.0.0.0', int(os.environ.get("PORT", 8080))), app)
     http_server.serve_forever()
