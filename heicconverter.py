@@ -10,7 +10,6 @@ import pillow_heif
 
 pillow_heif.register_heif_opener() # Give PIL access to HEIF
 
-UPLOAD_FOLDER = '/tmp'
 ALLOWED_EXTENSIONS = set(['heic', 'heif'])
 
 app = Flask(__name__)
