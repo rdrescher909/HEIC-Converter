@@ -11,7 +11,6 @@ import pillow_heif
 
 pillow_heif.register_heif_opener() # Give PIL access to HEIF
 
-UPLOAD_FOLDER = '/tmp'
 ALLOWED_EXTENSIONS = set(['heic', 'heif'])
 
 app = Flask(__name__)
@@ -25,10 +24,10 @@ def convert_all_files(working_dir):
     Args:
         working_dir (str, path): The working directory
     """
-    for item in os.listdir(working_dir):
-        filename, ext = os.path.splitext(item)
-        image = Image.open(os.path.join(working_dir, item))
-        image.save(os.path.join(working_dir, filename + ".png"))
+    for file in os.listdir(working_dir):
+        original_name, _ = os.path.splitext(item)
+        image = Image.open(os.path.join(working_dir, file))
+        image.save(os.path.join(working_dir, original_name + ".png"))
 
 def zip_all_files(work_dir):
     """Zips all png files in work_dir into an archive called output.zip
@@ -40,7 +39,8 @@ def zip_all_files(work_dir):
         for file in os.listdir(work_dir):
             _, ext = os.path.splitext(file)
             if ext.lower() == ".png":
-                zip.write(os.path.join(work_dir, file), file)
+                file_path = os.path.join(work_dir, file)
+                zip.write(file_path, file)
 
 
 @app.route("/", methods=["GET", "POST"])
@@ -49,15 +49,15 @@ def home():
     output_file_path = os.path.join(work_dir.name, "output.zip")
 
     if request.method == "POST":
-        if 'file' not in request.files:
+        if 'file' not in request.files: # No files given in the POST at all
             return "No image provided"
-        files = request.files.getlist('file') # Get all of the files
+        files = request.files.getlist('file') # Get all of the files, contains one entry with no filename if no files were given
         if files[0].filename == "": # Check if the first one is empty
             return "No image provided"
         for file in files:
             if file and is_allowed_file(file.filename):
-                output_name = os.path.join(work_dir.name, file.filename)
-                file.save(output_name)
+                output_name = os.path.join(work_dir.name, file.filename) 
+                file.save(output_name) # Save the file to the temp dir
     
     if request.method == "GET":
         url = request.args.get("url", type=str)
@@ -65,7 +65,7 @@ def home():
             return render_template('index.html')
         # Download file from given url
         response = requests.get(url, stream=True)
-        with open(os.path.join(work_dir.name ,"item.heic"), "wb") as fp:
+        with open(os.path.join(work_dir.name ,"url_image.heic"), "wb") as fp:
             shutil.copyfileobj(response.raw, file)
         del response
     
