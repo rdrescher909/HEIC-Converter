@@ -20,15 +20,24 @@ def is_allowed_file(filename: str) -> bool:
     return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
 
 def convert_all_files(working_dir):
+    """Converts all files in working_dir to pngs, assumes all files are of the proper type
+
+    Args:
+        working_dir (str, path): The working directory
+    """
     for item in os.listdir(working_dir):
         filename, ext = os.path.splitext(item)
         image = Image.open(os.path.join(working_dir, item))
         image.save(os.path.join(working_dir, filename + ".png"))
 
 def zip_all_files(work_dir):
+    """Zips all png files in work_dir into an archive called output.zip
+
+    Args:
+        work_dir (str, path): The working directory
+    """
     with zipfile.ZipFile(os.path.join(work_dir, "output.zip"), "w") as zip:
         for file in os.listdir(work_dir):
-            print(os.listdir(work_dir))
             _, ext = os.path.splitext(file)
             if ext.lower() == ".png":
                 zip.write(os.path.join(work_dir, file), file)
