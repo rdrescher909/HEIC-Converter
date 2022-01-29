@@ -19,13 +19,13 @@ app = Flask(__name__)
 def is_allowed_file(filename: str) -> bool:
     return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
 
-def convert_files(working_dir):
+def convert_all_files(working_dir):
     for item in os.listdir(working_dir):
         filename, ext = os.path.splitext(item)
         image = Image.open(os.path.join(working_dir, item))
         image.save(os.path.join(working_dir, filename + ".png"))
 
-def zip_files(work_dir):
+def zip_all_files(work_dir):
     with zipfile.ZipFile(os.path.join(work_dir, "output.zip"), "w") as zip:
         for file in os.listdir(work_dir):
             print(os.listdir(work_dir))
@@ -60,8 +60,8 @@ def home():
             shutil.copyfileobj(response.raw, file)
         del response
     
-    convert_files(work_dir.name)
-    zip_files(work_dir.name)
+    convert_all_files(work_dir.name)
+    zip_all_files(work_dir.name)
 
     @after_this_request
     def cleanup(response):
