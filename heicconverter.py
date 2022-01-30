@@ -1,3 +1,5 @@
+
+   
 import os
 import tempfile
 import shutil
@@ -20,7 +22,6 @@ def is_allowed_file(filename: str) -> bool:
 
 def convert_all_files(working_dir):
     """Converts all files in working_dir to pngs, assumes all files are of the proper type
-
     Args:
         working_dir (str, path): The working directory
     """
@@ -31,7 +32,6 @@ def convert_all_files(working_dir):
 
 def zip_all_files(work_dir):
     """Zips all png files in work_dir into an archive called output.zip
-
     Args:
         work_dir (str, path): The working directory
     """
