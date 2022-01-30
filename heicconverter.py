@@ -26,6 +26,7 @@ def convert_all_files(working_dir):
         original_name, _ = os.path.splitext(file)
         image = Image.open(os.path.join(working_dir, file))
         image.save(os.path.join(working_dir, original_name + ".png"))
+        del image
 
 def zip_all_files(work_dir):
     """Zips all png files in work_dir into an archive called output.zip
