@@ -12,7 +12,6 @@ pillow_heif.register_heif_opener() # Give PIL access to HEIF
 ALLOWED_EXTENSIONS = set(['heic', 'heif'])
 
 app = Flask(__name__)
-app.config["MAX_CONTENT_LENGTH"] = 1024 * 1024 * 512 # 512 MiB file limit
 
 def is_allowed_file(filename: str) -> bool:
     return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
