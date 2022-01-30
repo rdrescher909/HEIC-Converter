@@ -1,93 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HEIC Converter</title>
+    <link rel="stylesheet" href="/static/minstyle.io.css">
 </head>
 
 <body>
-    <style>
-        html {
-            background-color: darkgrey;
-            color: white;
-        }
-
-        header {
-            font-size: 1.5em;
-        }
-
-        footer {
-            font-size: 1.4em;
-        }
-
-        a {
-            color: rgb(7, 105, 179)
-        }
-
-        a:hover {
-            color: rgb(255, 0, 0)
-        }
-
-        input {
-            background-color: rgb(7, 105, 179);
-            color: white;
-            border: none;
-            padding: 10px;
-            font-size: 20px;
-            cursor: pointer;
-        }
-
-        label {
-            font-size: 20px;
-        }
-
-        input[type=submit]:hover {
-            background-color: rgb(0, 255, 106);
-            color: white;
-            border: none;
-            padding: 10px;
-            font-size: 20px;
-            cursor: pointer;
-        }
-
-        input[type=file] {
-            background-color: rgb(7, 105, 179);
-            color: white;
-            border: none;
-            padding: 10px;
-            font-size: 20px;
-            cursor: pointer;
-        }
-
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-    </style>
-
     <div class="container">
-        <header>
-            <h1>Convert HEIC images to png</h1>
-            <p>This is a simple tool to convert HEIC images to png.</p>
-        </header>
-        <main>
-            <form method="post" enctype="multipart/form-data">
-                <input type="file" name="file" id="file" multiple>
-                <input type="submit" value="Upload Image(s)">
-            </form>
-        </main>
-        <footer>
-            <p>
-                Made by <a href="https://github.com/rdrescher909/">Robert Drescher</a> <br>
-                Source Available on <a href="https://github.com/rdrescher909/HEIC-Converter">GitHub</a>
-            </p>
-        </footer>
+        <div class="row ms-text-center">
+            <header>
+                <h1>Convert HEIC images to png</h1>
+                <p>This is a simple tool to convert HEIC images to png.</p>
+                <br>
+                <p>There is no limit to the number of images that you can submit, however the maximum size per image is 16MiB and processing your images can take a maximum of 5 minutes.</p>
+            </header>
+        </div>
+        <div class="row ms-text-center">
+            <main>
+                <form method="post" enctype="multipart/form-data">
+                    <div class="ms-form-group">
+                        <input style="text-align-last: center;" type="file" name="file" id="file" accept=".heic,.heif"
+                            multiple>
+                        <input class="ms-success" type="submit" value="Upload Image(s)">
+                    </div>
+                </form>
+            </main>
+        </div>
+
+        <div class="row ms-text-center">
+            <footer>
+                <p>
+                    Source Available on <a href="https://github.com/rdrescher909/HEIC-Converter" target="_blank">GitHub</a><br>
+
+                    Disclaimer: Use this tool at your own risk. This tool is provided under the <a href="https://choosealicense.com/licenses/mit/" target="_blank">MIT License</a>.<br>
+
+                    Copyright 2022 <a href="https://github.com/rdrescher909/" target="_blank">Robert Drescher</a> <br>
+                </p>
+            </footer>
+        </div>
     </div>
 </body>
 
