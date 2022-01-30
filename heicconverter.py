@@ -26,7 +26,7 @@ def convert_all_files(working_dir):
         working_dir (str, path): The working directory
     """
     for file in os.listdir(working_dir):
-        original_name, _ = os.path.splitext(item)
+        original_name, _ = os.path.splitext(file)
         image = Image.open(os.path.join(working_dir, file))
         image.save(os.path.join(working_dir, original_name + ".png"))
 
