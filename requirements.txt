@@ -12,7 +12,6 @@ MarkupSafe==2.0.1
 Pillow==9.0.0
 pillow-heif==0.1.4
 pycparser==2.21
-requests==2.27.1
 urllib3==1.26.8
 Werkzeug==2.0.2
 zope.event==4.5.0
