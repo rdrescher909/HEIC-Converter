@@ -1,10 +1,8 @@
 import os
 import tempfile
-import shutil
 import zipfile
 
 from gevent.pywsgi import WSGIServer
-import requests
 from flask import Flask, request, render_template, send_file, after_this_request
 from PIL import Image
 import pillow_heif
@@ -58,14 +56,7 @@ def home():
                 file.save(output_name) # Save the file to the temp dir
     
     if request.method == "GET":
-        url = request.args.get("url", type=str)
-        if not url:
-            return render_template('index.html')
-        # Download file from given url
-        response = requests.get(url, stream=True)
-        with open(os.path.join(work_dir.name ,"url_image.heic"), "wb") as fp:
-            shutil.copyfileobj(response.raw, file)
-        del response
+        return render_template("index.html")
     
     convert_all_files(work_dir.name)
     zip_all_files(work_dir.name)
