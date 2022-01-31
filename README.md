@@ -18,7 +18,7 @@ Note that [pillow-heif](https://pypi.org/project/pillow-heif/) may need to build
 
 ## Notes
 
-- This project was made with Google Cloud Run in mind, therefore the limits stated on the `index.html` page are specific to cloud run, if run on your own server, you can submit and receive back as much data as you like.
+This project was made with Google Cloud Run in mind, therefore the limits stated on the `index.html` page are specific to cloud run, if run on your own server, you can submit and receive back as much data as you like.
 
 ## Contributing
 
