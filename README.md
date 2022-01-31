@@ -14,11 +14,11 @@ If you'd like to run this on your own machine, you'll need to clone the reposito
 
 `py -m pip install -r requirements.txt`
 
-
-
 Note that [pillow-heif](https://pypi.org/project/pillow-heif/) may need to build from source on your machine.
 
+## Notes
 
+- This project was made with Google Cloud Run in mind, therefore the limits stated on the `index.html` page are specific to cloud run, if run on your own server, you can submit and receive back as much data as you like.
 
 ## Contributing
 
