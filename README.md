@@ -1,6 +1,6 @@
 # About
 
-A simple web interface that allows you to upload an heic image and it will return you a converted png of that image.
+A simple web interface that allows you to upload heic images and it will return you a zip file of converted png images.
 
 ## Setup and Install
 
@@ -18,12 +18,9 @@ Note that [pillow-heif](https://pypi.org/project/pillow-heif/) may need to build
 
 ## Notes
 
-This project was made with Google Cloud Run in mind, therefore the limits stated on the `index.html` page are specific to cloud run, if run on your own server, you can submit and receive back as much data as you like.
+This project was made with Google Cloud Run in mind, therefore the limits stated on the `index.html` page are specific to cloud run, if run on a virtual machine instead, it can send and receive as much data as you'd like to pay for.
 
 ## Contributing
 
 If you'd like to contribute, feel free to submit a pull request.
-
-
-
 
