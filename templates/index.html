@@ -21,13 +21,19 @@
         </div>
         <div class="row ms-text-center">
             <main>
-                <form method="post" enctype="multipart/form-data">
+                <form method="post" enctype="multipart/form-data" onsubmit="handleSubmit()">
                     <div class="ms-form-group">
                         <input style="text-align-last: center;" type="file" name="file" id="file" accept=".heic,.heif"
                             multiple>
                         <input class="ms-success" type="submit" value="Upload Image(s)">
                     </div>
                 </form>
+                <p id="received-text"></p>
+                <script>
+                    function handleSubmit() {
+                        document.getElementById("received-text").innerHTML = "Uploading and converting, please be patient and refrain from refreshing the page or hitting upload again.";
+                    }
+                </script>
             </main>
         </div>
 
