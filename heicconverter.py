@@ -3,7 +3,7 @@ import tempfile
 import zipfile
 
 from gevent.pywsgi import WSGIServer
-from flask import Flask, request, render_template, send_file, after_this_request
+from flask import Flask, request, render_template, send_file, after_this_request, send_from_directory
 from PIL import Image
 import pillow_heif
 
@@ -68,6 +68,10 @@ def home():
         return response
 
     return send_file(output_file_path, mimetype="application/zip")
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico')
 
 if __name__ == "__main__":
     http_server = WSGIServer(('0.0.0.0', int(os.environ.get("PORT", 8080))), app)
