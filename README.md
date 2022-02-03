@@ -2,6 +2,8 @@
 
 A simple web interface that allows you to upload heic images and it will return you a zip file of converted png images.
 
+Currently run on Google Cloud Run: https://heicconverter.robertdrescher.com/
+
 ## Setup and Install
 
 If you'd like to run this on your own machine, you'll need to clone the repository install the dependencies.
